@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'firsts.css' %}">
+</head>
+<body>
+
+<div class="header-actions">
+    {% if user.is_authenticated %}
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Выйти из аккаунта</button>
+    </form>
+    {% else %}
+    <p>Уже зарегистрированы? <a class="button" href="{% url 'user_login' %}">Войти</a></p>
+    <p>Нет аккаунта? <a class="button" href="{% url 'register' %}">Зарегистрироваться</a></p>
+    {% endif %}
+</div>
+
+    <header>
+        <h1>Список Велогонок</h1>
+    </header>    
+        
+    <main>
+        <div class="race-table">
+        <ul>
+            {% for race in races %}
+                <li class="lili">{{ race.name }}</li>
+            {% empty %}
+                <li>Гонок не найдено.</li>
+            {% endfor %}
+        </ul>
+        </div>
+        {% if user.is_authenticated %}
+        <p class="exit"><a class="button" href="{% url 'race_list' %}">Подробнее о Велогонках</a></p>
+        {% else %}
+        <p class="exit">Подробнее о Велогонках можно просмотреть зарегистрированым пользователям</p>
+        {% endif %}
+
+        <br>
+
+        {% if user.is_authenticated %}
+        <h2>Добавить комментарий</h2>
+        <form method="post" class="comment-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_content"></label>
+                <textarea id="id_content" name="content" rows="3" class="comment-textarea" placeholder="..."></textarea>
+            </div>
+            <button type="submit" class="submit-button">Отправить</button>
+        </form>
+</form>
+        {% else %}
+        <p class="exit">Вы должны быть зарегистрированы, чтобы оставить комментарий.</p>
+        {% endif %}
+        
+        <h2>Комментарии</h2>
+<ul class="comments-list">
+    {% for comment in comments %}
+    
+        <li class="comment-item">
+            <div class="comment-date">{{ comment.created_at|date:"Y-m-d H:i" }}</div>
+            <div class="comment-author"><strong>{{ comment.author.username }}:</strong></div>
+            <br>
+            <div class="comment-content">{{ comment.content }}</div>
+        </li>
+
+    {% empty %}
+        <li class="comment-item">Комментариев нет.</li>
+    {% endfor %}
+
+</ul>
+    </main>
+    
+    <br>
+    <footer>
+        <p>&copy; 2023 Ваш Сайт. Все права защищены.</p>
+    </footer>
+</body>
+</html>

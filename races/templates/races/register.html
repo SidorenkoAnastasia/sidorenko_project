@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'regis.css' %}">
+    <title>Регистрация</title>
+</head>
+<body>
+    <h1>Регистрация</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <a class="form-group">{{ form.username.label_tag }} {{ form.username }}</a> 
+        <br><br>
+        <a class="form-group2">{{ form.email.label_tag }} {{ form.email }}</a> 
+        
+        <br><br>
+        <a class="form-group3">{{ form.password1.label_tag }} {{ form.password1 }}</a> 
+        <br><br><br>
+        
+        <a class="form-group4">{{ form.password2.label_tag }} {{ form.password2 }}</a> 
+        <br><br>
+        <button type="submit">Зарегистрироваться</button>
+    
+    <p>Уже зарегистрированы? <br><a class="s-button" href="{% url 'user_login' %}">Войти</a></p>
+    <br>
+    <p> <a href="{% url 'home' %}">Вернутся на главную страницу</a></p>
+    </form>
+</body>
+</html>

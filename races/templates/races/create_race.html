@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Создание Гонки</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'create_race.css' %}">
+</head>
+<body>
+    <h1>Создание Новой Гонки</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit">Создать</button>
+    </form>
+    <p>Пользователям участвующим в Вашей велогонке будет дан ваш email адрес для связи.</p>
+    <a href="{% url 'race_list' %}">Назад к списку гонок</a>
+
+    <p> <a href="{% url 'home' %}">Вернутся на главную страницу</a></p>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ race.name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'race_details.css' %}">
+</head>
+<body>
+    <div class="comments-list">
+    <div class="try">    
+
+{% if request.user == race.creator %}  <!-- Проверка на создателя гонки -->
+                <div class="delete-container">
+                    <form method="post" action="{% url 'delete_race' race.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button" onclick="return confirm('Вы уверены, что хотите удалить гонку?');">Удалить гонку</button>
+                    </form>
+                </div>
+            {% endif %}
+
+    <h1>{{ race.name }}</h1>
+    <p>Дата: {{ race.date }}</p>
+    <p>Организатор: {{ race.organizer }}</p>
+    <p>Путь велогонки: {{ race.path }}</p>
+
+    <h2>Создатель гонки:</h2>
+    <p>Имя: {{ race.creator.username }}</p>
+    <p>Email для связи с организатором: {{ race.creator.email }}</p>
+
+    <div class="button-container1">
+    {% if request.user.id not in registered_ids %}
+    <a class="create-race-button1" href="{% url 'register_for_race' race.id %}">Зарегистрироваться на гонку</a>
+    {% endif %}
+    </div>
+    
+
+    
+        </div>
+    </div>
+    <h2>Участники:</h2>
+    <ul>
+        {% for registration in race.raceregistration_set.all %}
+            <li>{{ registration.user.username }}
+                {% if registration.user == request.user %}
+                    <form method="post" action="{% url 'unregister_from_race' race.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit">Отказаться от участия</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Нет зарегистрированных участников.</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <h2>Добавить комментарий:</h2>
+    <form method="post" action="{% url 'add_comment' race.id %}"  class="comment-form">
+        {% csrf_token %}
+        <textarea name="comment" cols="79" rows="3" required></textarea>
+        <br>
+        <button type="submit">Отправить</button>
+    </form>
+
+    <h2>Комментарии:</h2>
+    <ul class="comments-list">
+        {% for comment in race.comments.all %}
+
+            <li class="comment-item">
+            <div class="comment-date">({{ comment.created_at }})</div>
+            <div class="comment-author"><strong>{{ comment.user.username }}:</strong> </div>
+            <div class="comment-content">{{ comment.text }}</div>
+            </li>
+        {% empty %}
+            <li class="comment-item">Нет комментариев.</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <a class="exit" href="{% url 'race_list' %}">Назад к списку гонок</a>
+</body>
+</html>

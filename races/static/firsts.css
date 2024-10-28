@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    font-family:serif;
+}
+h2 {
+    color: #333;
+    text-align:center;
+    font-family:serif;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 5px; 
+    padding: 20px; 
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin: 0 auto; 
+}
+
+a {
+    color: #007BFF; 
+    text-decoration: none;
+}
+
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.button {
+    display: inline-block; 
+    background-color: #007BFF; 
+    color: white; 
+    padding: 7px 15px; 
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 5px;
+    transition: background-color 0.3s; 
+}
+
+.button:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+
+.comments-list {
+    list-style-type: none; 
+    padding: 0; 
+    max-width: 600px;
+    margin: 0 auto; 
+}
+
+.comment-item {
+    background-color: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 5px; 
+    margin: 10px 0; 
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-content {
+    margin: 5px 0;
+    color: #555; 
+}
+
+.comment-date {
+    font-size: 0.9em; 
+    color: #999; 
+    margin-top: 5px;
+}
+
+.comment-form {
+    background-color: #f9f9f9; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 5px; 
+    padding: 20px; 
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin: 0 auto; 
+}
+
+.form-group {
+    margin-bottom: 15px; 
+}
+
+.submit-button {
+    background-color: #e48500; 
+    color: white; 
+    border: none; 
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #b33600;
+}
+
+.comment-textarea {
+    width: 595px; 
+}
+
+.lili {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 10px; 
+    padding: 10px; 
+    margin-bottom: 20px;
+    max-width: 650px;
+    margin: 0 auto; 
+    text-align: center; 
+}
+.exit {
+    text-align:center;
+}
+
+.header-actions {
+    position: absolute; 
+    top: 10px;
+    right: 0px;
+    text-align: right;
+    z-index: 1000; 
+}
+.race-table {
+    max-height: 300px; 
+    overflow-y: auto;  /*  прокрутка по вертикали */
+    border: 1px solid #ccc; 
+    margin: 20px 300px; 
+    padding: 10px; /* Отступ внутри контейнера */
+    background-color: #f9f9f9;
+    border-radius: 5px; 
+}

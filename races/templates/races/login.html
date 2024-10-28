@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <title>Вход</title>
+</head>
+<body class="log">
+    <div class="container">
+    <h1>Вход</h1>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-button">Войти</button>
+    </form>
+    
+    <br>
+    <p>Нет аккаунта? <br><a class="s-button" href="{% url 'register' %}">Зарегистрироваться</a></p>
+    <br>
+    <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+    <p> <a href="{% url 'home' %}">Вернутся на главную страницу</a></p>
+
+    <div>
+</body>
+</html>

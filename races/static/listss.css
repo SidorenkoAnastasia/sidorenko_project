@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    font-family:serif;
+}
+
+
+.рp {
+    text-align: center;
+    justify-content: center; 
+    display: flex;
+    color: #ffffff;
+}
+.рp2 {
+    text-align: center;
+    justify-content: center; 
+    display: flex;
+
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 5px; 
+    padding: 20px; 
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin: 0 auto; 
+}
+
+a {
+     
+    text-align: center;
+    justify-content: center; 
+}
+
+
+
+
+.button-container {
+    text-align: center; 
+    margin-bottom: 20px; /* Отступ снизу для визуального разделения */
+}
+.create-race-button {
+    padding: 10px 20px; /* Отступы внутри кнопки */
+    background-color: #007BFF; 
+    color: white;
+    border: none; /* Без рамки */
+    cursor: pointer; 
+    transition: background-color 0.3s;
+    text-decoration: none; /* Убирает подчеркивание из ссылки */
+    border-radius: 5px;
+}
+.create-race-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+.button-container1 {
+    
+    margin-bottom: 0px; 
+}
+.create-race-button1 {
+    padding: 4px 12px; 
+    background-color: #ecbb09; 
+    color: white;
+    border: none;
+    cursor: pointer; 
+    transition: background-color 0.3s;
+    text-decoration: none; /* Убирает подчеркивание из ссылки */
+    border-radius: 5px;
+}
+.create-race-button1:hover {
+    background-color: #cb6e04; 
+}
+
+.race-table {
+    max-height: 500px; /* макс высота */
+    overflow-y: auto;  /* Включает вертикальную прокрутку */
+    border: 1px solid #ccc; /* Добавляет границу */
+    margin: 20px 300px; /* Отступы */
+    padding: 10px; /* Отступ внутри контейнера */
+    background-color: #f9f9f9; 
+    border-radius: 5px; 
+}

@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список Гонок</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'listss.css' %}">
+</head>
+<body>
+    <h1>Список Гонок</h1>
+
+    <form method="get" action="" class="search-form">
+        <input type="text" name="q" placeholder="...">
+        <button type="submit">Поиск</button>
+    </form> 
+
+
+    <div class="button-container">
+        <a class="create-race-button" href="{% url 'create_race' %}">Создать новую гонку</a>
+    </div>
+    <div class="race-table">
+    <ul>
+        {% for race in races %}
+            <li>
+                <div class="button-container1">
+                <a class="create-race-button1" href="{% url 'race_detail' race.id %}">Участвовать в гонке</a>
+                </div>
+                <br>
+                {{ race.name }} - {{ race.date }} - Организатор: {{ race.organizer }}
+            <br>Путь велогонки: {{ race.path}}
+            </li><br>
+        {% endfor %}
+    </ul>
+    </div>
+    <p>  <a class="рp2" href="{% url 'home' %}">Вернутся на главную страницу</a></p>
+    
+</body>
+</html>
