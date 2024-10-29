@@ -4,6 +4,7 @@
     <title>{{ race.name }}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'race_details.css' %}">
+    {% comment %} css  для страницы {% endcomment %}
 </head>
 <body>
     <div class="comments-list">
@@ -17,7 +18,7 @@
                     </form>
                 </div>
             {% endif %}
-
+            {% comment %} Кнопка для удаления гонки, видимая только создателю {% endcomment %}
     <h1>{{ race.name }}</h1>
     <p>Дата: {{ race.date }}</p>
     <p>Организатор: {{ race.organizer }}</p>
@@ -32,7 +33,7 @@
     <a class="create-race-button1" href="{% url 'register_for_race' race.id %}">Зарегистрироваться на гонку</a>
     {% endif %}
     </div>
-    
+    {% comment %} Ссылка для регистрации на гонку, видимая только незарегистрированным участникам {% endcomment %}
 
     
         </div>
@@ -41,10 +42,12 @@
     <ul>
         {% for registration in race.raceregistration_set.all %}
             <li>{{ registration.user.username }}
+                {% comment %} Имя участника {% endcomment %}
                 {% if registration.user == request.user %}
                     <form method="post" action="{% url 'unregister_from_race' race.id %}" style="display:inline;">
                         {% csrf_token %}
                         <button type="submit">Отказаться от участия</button>
+                        {% comment %} Кнопка для отказа от участия, видимая только зарегистрированным участникам {% endcomment %}
                     </form>
                 {% endif %}
             </li>
@@ -56,8 +59,10 @@
     <h2>Добавить комментарий:</h2>
     <form method="post" action="{% url 'add_comment' race.id %}"  class="comment-form">
         {% csrf_token %}
+        {% comment %} Защита от CSRF атак {% endcomment %}
         <textarea name="comment" cols="79" rows="3" required></textarea>
         <br>
+        {% comment %} добавления комментариев {% endcomment %}
         <button type="submit">Отправить</button>
     </form>
 
@@ -67,8 +72,11 @@
 
             <li class="comment-item">
             <div class="comment-date">({{ comment.created_at }})</div>
+            {% comment %} Дата создания комментария {% endcomment %}
             <div class="comment-author"><strong>{{ comment.user.username }}:</strong> </div>
+            {% comment %} Имя автора комментария {% endcomment %}
             <div class="comment-content">{{ comment.text }}</div>
+            {% comment %} Содержимое комментария {% endcomment %}
             </li>
         {% empty %}
             <li class="comment-item">Нет комментариев.</li>

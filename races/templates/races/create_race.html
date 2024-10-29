@@ -10,8 +10,9 @@
     <h1>Создание Новой Гонки</h1>
     <form method="post">
         {% csrf_token %}
+        {% comment %} Защита от CSRF атак {% endcomment %}
         {{ form.as_p }}
-        
+        {% comment %} Отображает форму в виде параграфов {% endcomment %}
         <button type="submit">Создать</button>
     </form>
     <p>Пользователям участвующим в Вашей велогонке будет дан ваш email адрес для связи.</p>

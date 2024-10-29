@@ -30,6 +30,7 @@
         <ul>
             {% for race in races %}
                 <li class="lili">{{ race.name }}</li>
+                {% comment %} ^^^Отображает название гонки в виде элемента списка {% endcomment %}
             {% empty %}
                 <li>Гонок не найдено.</li>
             {% endfor %}
@@ -39,6 +40,7 @@
         <p class="exit"><a class="button" href="{% url 'race_list' %}">Подробнее о Велогонках</a></p>
         {% else %}
         <p class="exit">Подробнее о Велогонках можно просмотреть зарегистрированым пользователям</p>
+        {% comment %} Сообщение для незарегистрированных пользователей {% endcomment %}
         {% endif %}
 
         <br>
@@ -50,23 +52,29 @@
             <div class="form-group">
                 <label for="id_content"></label>
                 <textarea id="id_content" name="content" rows="3" class="comment-textarea" placeholder="..."></textarea>
+                {% comment %} Поле для ввода комментария {% endcomment %}
             </div>
             <button type="submit" class="submit-button">Отправить</button>
         </form>
 </form>
         {% else %}
         <p class="exit">Вы должны быть зарегистрированы, чтобы оставить комментарий.</p>
+        {% comment %} Сообщение для незарегистрированных пользователей {% endcomment %}
         {% endif %}
         
         <h2>Комментарии</h2>
+        {% comment %} Заголовок для отображаемых комментариев {% endcomment %}
 <ul class="comments-list">
     {% for comment in comments %}
     
         <li class="comment-item">
             <div class="comment-date">{{ comment.created_at|date:"Y-m-d H:i" }}</div>
+            {% comment %} Дата создания комментария {% endcomment %}
             <div class="comment-author"><strong>{{ comment.author.username }}:</strong></div>
+            {% comment %} Имя автора комментария {% endcomment %}
             <br>
             <div class="comment-content">{{ comment.content }}</div>
+            {% comment %} Содержимое комментария {% endcomment %}
         </li>
 
     {% empty %}

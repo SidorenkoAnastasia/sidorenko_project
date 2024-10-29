@@ -11,6 +11,7 @@
 
     <form method="get" action="" class="search-form">
         <input type="text" name="q" placeholder="...">
+        {% comment %} Поле для поиска гонок по названию или другим критериям {% endcomment %}
         <button type="submit">Поиск</button>
     </form> 
 
@@ -24,9 +25,11 @@
             <li>
                 <div class="button-container1">
                 <a class="create-race-button1" href="{% url 'race_detail' race.id %}">Участвовать в гонке</a>
+                {% comment %} Ссылка для участия в гонке, ведущая к странице деталей гонки {% endcomment %}
                 </div>
                 <br>
                 {{ race.name }} - {{ race.date }} - Организатор: {{ race.organizer }}
+                {% comment %} Информация о гонке {% endcomment %}
             <br>Путь велогонки: {{ race.path}}
             </li><br>
         {% endfor %}

@@ -3,25 +3,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% comment %} Установка кодировки страницы {% endcomment %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} Настройка адаптивности страницы для мобильных устройств  {% endcomment %}
     {% load static %}
+    {% comment %} Загрузка статических файлов в шаблонах Django {% endcomment %}
     <link rel="stylesheet" href="{% static 'regis.css' %}">
     <title>Регистрация</title>
 </head>
 <body>
     <h1>Регистрация</h1>
     <form method="post">
+        {% comment %} регистрации параметр post для отправки данных на сервер {% endcomment %}
         {% csrf_token %}
-        
+        {% comment %} Защита от CSRF-атак {% endcomment %}
         <a class="form-group">{{ form.username.label_tag }} {{ form.username }}</a> 
+        {% comment %} Поле ввода для имени пользователя {% endcomment %}
         <br><br>
         <a class="form-group2">{{ form.email.label_tag }} {{ form.email }}</a> 
-        
+        {% comment %} Поле ввода для адреса электронной почты {% endcomment %}
         <br><br>
         <a class="form-group3">{{ form.password1.label_tag }} {{ form.password1 }}</a> 
+        {% comment %} Поле для первого пароля {% endcomment %}
         <br><br><br>
         
         <a class="form-group4">{{ form.password2.label_tag }} {{ form.password2 }}</a> 
+        {% comment %} Поле для второго пароля {% endcomment %}
         <br><br>
         <button type="submit">Зарегистрироваться</button>
     
